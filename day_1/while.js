@@ -1,0 +1,17 @@
+let x = 1;
+
+while(x <= 10) {
+  console.log('Hello World!');
+  x++;
+}
+
+// console.log('Hello World!');
+// console.log('Hello World!');
+// console.log('Hello World!');
+// console.log('Hello World!');
+// console.log('Hello World!');
+// console.log('Hello World!');
+// console.log('Hello World!');
+// console.log('Hello World!');
+// console.log('Hello World!');
+// console.log('Hello World!');
