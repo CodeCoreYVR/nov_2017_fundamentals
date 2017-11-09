@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Check Out</title>
+  </head>
+  <body>
+    <h1>Check Out</h1>
+
+    <a href="mailto:jacobtran@gmail.com">Jacob Tran</a>
+    <a href="tel:+16042223333">555-555-5555</a>
+    <a href="http://disneyworld.com/">Disney World</a>
+    <a href="http://disneyworld.com/" target="_blank">Disney World</a>
+
+    <form action="" method="POST">
+      <div>
+        <label for="first-name">First Name</label>
+        <input id="first-name" type="text">
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" type="password">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email">
+      </div>
+      <div>
+        <input type="checkbox"><label>Free Shippping</label>
+        <input type="checkbox" disabled><label>Gift Wrapping</label>
+        <input type="checkbox" checked ><label>Amazon Prime</label>
+      </div>
+
+      <!-- the name attribute with radio buttons forms a radio button group -->
+      <div>
+        <input type="radio" name="colour" checked><label>Black</label>
+        <input type="radio" name="colour"><label>Gold</label>
+        <input type="radio" name="colour"><label>Pink</label>
+      </div>
+
+      <div>
+        <input type="radio" name="teachers"><label>Jacob</label>
+        <input type="radio" name="teachers" checked><label>Jason</label>
+        <input type="radio" name="teachers"><label>Tam</label>
+      </div>
+
+      <div>
+        <!-- drop down list -->
+        <label>Languages</label>
+        <select>
+          <option disabled>English</option>
+          <option hidden>French</option>
+          <option selected>Italian</option>
+          <option>Portugese</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Tweet</label>
+        <textarea maxlength="140" cols="50" rows"3"></textarea>
+      </div>
+
+      <div>
+        <input type="color">
+        <input type="date">
+        <input type="datetime">
+      </div>
+      <input type="submit">
+    </form>
+  </body>
+</html>
