@@ -1,0 +1,11 @@
+/* kebab case: this-is-kebab-case */
+#outer-box {
+  border-radius: 5px;
+  border: darkgrey 2px solid;
+  background-color: lightgrey;
+  /* by default the height and width will change according to the content in the box or you can override: */
+  width: 300px;
+  height: 1000px;
+  /* box model */
+  padding: 10px;
+}
