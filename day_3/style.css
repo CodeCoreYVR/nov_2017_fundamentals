@@ -1,0 +1,72 @@
+/* css rule */
+body {
+  background-color: lavender;
+  background-image: url(food.png);
+  /*background-image: url(stew.jpg);*/
+  /*background-repeat: repeat-y;*/
+  /*background-size: cover;*/
+}
+h1 {
+  color: firebrick;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+img {
+  width: 200px;
+}
+p {
+  font-style: italic;
+}
+h2 {
+  color: firebrick;
+  font-family: fantasy;
+  font-size: 10px;
+}
+ul {
+  background-color: beige;
+  background-color: rgb(200,5,10);
+  background-color: #33A455;
+  width: 300px;
+  border-radius: 10px;
+
+  /*border-color: black;
+  border-width: 2px;
+  border-style: solid;*/
+  border: red thick dotted;
+}
+
+/* selecting an html tag name*/
+li {
+  color: khaki;
+}
+
+/* select using an id, is meant to be used only once */
+#carrot {
+  color: orange;
+}
+
+/* select using a class, is meant to be reused */
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+/* example of a relationship between two elements */
+/* ancenstry */
+/* style list items that are children or grand children or great great grand children */
+ul li {
+  background-color: green;
+}
+
+/* style direct descendants */
+ul > li {
+  background-color: blue;
+}
+
+ul > li.higlight {}
+ul li#carrot {}
+ul.highlight#jacob {}
+
+
+/**/

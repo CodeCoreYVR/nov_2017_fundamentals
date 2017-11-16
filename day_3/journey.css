@@ -1,0 +1,14 @@
+body {
+  margin: 0px;
+  background-image: url(http://eskipaper.com/images/winter-road-wallpapers-1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+div {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.5);
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+}
