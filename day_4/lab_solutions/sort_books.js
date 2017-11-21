@@ -14,7 +14,7 @@ while (true) {
   let book = prompt('What is your book?')
 
   // we check if the book title is 'exit'
-  if (book.toLowerCase() === 'exit') {
+  if (book === null || book.toLowerCase() === 'exit') {
     // if so we stop asking the user for a book title, by breaking out of the loop
     break;
   } else {
