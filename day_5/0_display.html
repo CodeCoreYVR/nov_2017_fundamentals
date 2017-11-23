@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Display</title>
+    <style>
+      title {
+        display: none;
+      }
+      h1 {
+        color: pink;
+        background-color: grey;
+        display: block;
+        width: 300px;
+        height: 300px;
+        margin: 10px;
+        padding: 20px;
+        /* they take up the entire horizontal width of the viewport */
+        /* we can also the width and height of the element */
+      }
+      a {
+        display: inline;
+        /* they like to sit next to eachother on the page */
+        /* they flex with viewport */
+        color: lightblue;
+        background-color: gold;
+        /* ignores width height */
+        width: 300px;
+        height: 300px;
+        margin: 10px;
+        padding: 20px;
+      }
+      div {
+        color: white;
+        background-color: firebrick;
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+      }
+      button {
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Display</h1>
+    <h1>Block</h1>
+    <h1>Element</h1>
+
+    <!-- text on it's own is inline -->
+    These are words Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <a>Anchor</a> <span>Span</span> <img src="puppy.jpg"> <strong></strong> <em></em>
+
+    <!-- div tags are block -->
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+
+    <button>Click Me!</button>
+    <button>Click Me!</button>
+    <button>Click Me!</button>
+  </body>
+</html>

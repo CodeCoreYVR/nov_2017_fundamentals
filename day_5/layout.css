@@ -1,0 +1,32 @@
+body {
+  margin: 0px;
+  color: white;
+  font-size: 30px;
+  font-family: sans-serif;
+  text-align: center;
+}
+header {
+  background-color: red;
+}
+nav {
+  background-color: orange;
+}
+section {
+  background-color: yellow;
+  float: left;
+  width: 75%;
+}
+article {
+  background-color: green;
+  margin: 10px;
+}
+aside {
+  background-color: blue;
+  float: right;
+  width: 25%;
+}
+footer {
+  background-color: purple;
+  clear: both;
+  width: 100%;
+}

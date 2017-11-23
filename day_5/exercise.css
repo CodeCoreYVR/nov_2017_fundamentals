@@ -1,0 +1,31 @@
+body {
+  margin: 0px;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+header {
+  background-color: red;
+}
+nav {
+  background-color: orange;
+}
+section {
+  background-color: yellow;
+  width: 75%;
+  float: left;
+}
+article {
+  background-color: green;
+  margin: 6px;
+}
+aside {
+  background-color: blue;
+  width: 25%;
+  float: right;
+  /* flex-grow: 1; */
+}
+footer {
+  background-color: purple;
+  clear: both;
+}
