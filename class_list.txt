@@ -1,1 +1,3 @@
-Wes, John, Jorge, Samantha, Bronya, Érika, Jay, James, Ryan, Jamil, Metika, Audra, Francis
+Wes, John, Jorge, Samantha, Bronya, Érika, Jay, James, Forrest, Jamil, Metika, Audra, Francis, Gus
+
+["Wes", "John", "Jorge", "Samantha", "Bronya", "Érika", "Jay", "James", "Forrest", "Jamil", "Metika", "Audra", "Francis", "Gus"]
