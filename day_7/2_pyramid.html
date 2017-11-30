@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Flexbox Pyramid</title>
+    <style>
+      .container {
+        background-color: lavender;
+        display: flex;
+        justify-content: center;
+
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin: 10px;
+      }
+
+      /*.item:nth-child(even) { background-color: pink }*/
+      /*.item:nth-child(odd) { background-color: grey }*/
+
+      /* .container:nth-child(1) means the first occurance of the container */
+      /* > .item means any direct decendants that are of class item */
+      .container:nth-child(1) > .item {
+        background-color: red;
+      }
+      .container:nth-child(2) > .item {
+        background-color: orange;
+      }
+      .container:nth-child(3) > .item {
+        background-color: yellow;
+      }
+      .container:nth-child(4) > .item {
+        background-color: green;
+      }
+      .container:nth-child(5) > .item {
+        background-color: red;
+      }
+
+      .red { background-color: red }
+      .orange { background-color: orange }
+      .yellow { background-color: yellow }
+      .green { background-color: green }
+    </style>
+  </head>
+  <body>
+    <!-- I want a red circle to appear in the middle of my page -->
+    <div class="container">
+      <div class="item"></div>
+    </div>
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+</html>

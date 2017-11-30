@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Media Queries</title>
+    <style>
+      /* media queries allow us to listen to the viewport or the browser window */
+      /* we can set css rules accordingly */
+      @media (max-width: 1280px) {
+        body {
+          background-color: red;
+        }
+        li {
+          display: inline;
+        }
+      }
+      @media (max-width: 1024px) {
+        body {
+          background-color: orange;
+          animation: dawnToDusk 2s infinite;
+        }
+        li {
+          display: block;
+        }
+      }
+
+      @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+
+      a {
+        font-family: 'Gloria Hallelujah', cursive;
+        /*font-family: serif;
+        font-family: san-serif;*/
+        /*font-family: Arial;*/
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      @keyframes dawnToDusk {
+        from { background-color: red }
+        to {  background-color: blue }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Media Queries</h1>
+  </body>
+</html>
