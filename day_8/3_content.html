@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Adding Dynamic Content</title>
+    <!-- <script src="js/jquery-3.2.1.js"></script> -->
+
+    <!-- content delivery network: CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script>
+
+      // ready!!!
+      $(document).ready(function(){
+        // $('table').css('position', 'fixed');
+        // $('table').css('top', '0px');
+        // $('table').css('left', '0px');
+
+        // so.. the document is ready
+        // get the name from the text field
+        // check the submit event
+        $('form').submit(function(event) {
+          // extract out the name from the text field
+          //let name = $('input').eq(0).attr('value');
+          // innerHTML .html()
+          event.preventDefault();
+          let name = $('input[type=text]').val();
+          $('input[type=text]').val(''); // setter
+          console.log('<li>' + name + '</li>');
+          $('ul').append('<li>' + name + '</li>');
+          // $('ul').prepend('<li>' + name + '</li>');
+          $('table').append('<tr><td>' + name + '</td></tr>');
+
+        });
+
+        // make the avatar follow the mouse position
+        $(document).mousemove(function(event) {
+          // $('img').css('position', 'absolute');
+          // $('img').css('top', event.clientY);
+          // $('img').css('left', event.clientX);
+          // console.log(event);
+        });
+
+        // move the avatar not on mouse movement, rather on keypresses
+        // up down left right, move the avatar accordingly
+        $('img').css('position', 'absolute');
+        $('img').css('top', '100px'); // set position to 100px
+        let currentY = parseInt( $('img').css('top') ); // store the position in a variable as an integer
+
+        console.log("currentY: ");
+        console.log(currentY);
+
+        $(document).keyup(function(event){
+          console.log(event.which);
+
+          // up is 38
+          // down is 40
+          // left 37
+          // right 39
+          if (event.which == 38) {
+            $('img').css('top', `${currentY-=10}px`);
+            console.log(currentY);
+          } else if (event.which == 40) {
+            $('img').css('top', `${currentY+=10}px`);
+          }
+        });
+
+        $('tr').mouseenter(function() {
+          // $(this).addClass('highlight');
+          console.log( $(this).css('background-color') ); // getter
+          $(this).css('background-color', 'yellow'); //setter
+        });
+
+        $('tr').mouseleave(function() {
+          $(this).css('background-color', 'white');
+        });
+
+        // when you click on a name, i want you to remove it from the list
+        $('li').click(function() {
+          $(this).fadeOut(3000, function(){
+            //console.log("animation has ended");
+            $(this).remove();
+          });
+          //$(this).off();
+        });
+
+        // selecting the ul li
+        // put the items in an array?
+
+        // make me a table that holds the attendance records for all the students
+        //                 Dec 2     Dec 3  ...
+        // Jacob Tran        X         -    ...
+        //  .
+        //  .
+        //  .
+
+         // have the rows highlight
+         // make a form that can add items to the table
+         // have the ability to remove a row from the table
+         // [stretch] the ability to add a day's attendance
+         // [stretch] the ability to remove or change a day's attendance
+      });
+    </script>
+  </head>
+  <body>
+    <!-- create a form to add names to our attendance sheet -->
+    <h1>Add People</h1>
+    <form>
+      <input type="text" placeholder="Enter a name">
+      <input type="submit">
+    </form>
+    <h1>Attendance</h1>
+    <ul>
+      <li>Jacob</li>
+      <li>Jason</li>
+      <li>Bang</li>
+      <li>Francis</li>
+      <li>Wes</li>
+      <li>Audra</li>
+    </ul>
+
+    <table border=1>
+      <tr>
+        <th>Name</th>
+        <th>Dec 2</th>
+        <th>Dec 3</th>
+        <th>Dec 4</th>
+        <th>Dec 5</th>
+        <th>Dec 6</th>
+      </tr>
+    </table>
+
+    <img width="50px" src="http://www.roboticslawjournal.com/files/media/BB_avatar.png">
+  </body>
+</html>
