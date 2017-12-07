@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Menu</title>
+    <script src='jquery-3.2.1.js'></script>
+    <script>
+      // step 1: ready?!?!
+      $(document).ready(function() {
+        $('a').click(function() {
+          // unselect all the other anchor tags when one is clicked!?!?!
+          $('a').eq(0).removeClass('selected1');
+          $('a').eq(1).removeClass('selected2');
+          $('a').eq(2).removeClass('selected3');
+
+          if ($(this).eq() == 0) {
+            $(this).addClass('selected1');
+          } else if ($(this).eq() == 1) {
+            $(this).addClass('selected2');
+          } else if ($this.eq() == 2) {
+            $(this).addClass('selected3');
+          }
+        });
+      });
+
+    </script>
+    <style>
+      .selected1 {
+        background-color: lavender;
+        color: black;
+      }
+      .selected2 {
+        background-color: lightblue;
+        color: black;
+      }
+      .selected3 {
+        background-color: lightgreen;
+        color: black;
+      }
+      li {
+        display: inline-block;
+        /*float: left;*/
+      }
+      a {
+          text-decoration: none;
+          font-family: sans-serif;
+          font-size: 20px;
+          font-weight: bold;
+          margin-right: 20px;
+          color: grey;
+          /* background-color: lavender; */
+      }
+      a:hover {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- html5 semantic tag -->
+    <nav>
+      <ul>
+        <li><a href="#" class="selected">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>
