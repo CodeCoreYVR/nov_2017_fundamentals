@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Firebase Todo List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Add the Firebase code here. Below this comment -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      // THIS IS EXAMPLE ONLY!!!!!
+      // Copy and Paste your own Firebase configuration code
+      var config = {
+        apiKey: "???",
+        authDomain: "???",
+        databaseURL: "???",
+        projectId: "???",
+        storageBucket: "???",
+        messagingSenderId: "???"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </head>
+  <body>
+    <!--  This html is a sample for the todo list or awesome messages
+          Go through this and rename things as you need to such as...
+          1. Give the form a unique id.
+          2. Change the input id to something meaningful to you
+          3. Change the value of the submit button "Send Message" to something else
+          4. Change the id of the container <div> from "tasks" to something else
+    -->
+    <div class="container">
+      <h1>Firebase Todo</h1>
+
+      <form id="task-form">
+        <div class="form-group">
+          <label for="name">Task</label>
+          <input type="text" id="body" class="form-control">
+        </div>
+        <input type="submit" value="Send Message" class="btn btn-primary">
+      </form>
+
+      <hr>
+
+      <div id="tasks">
+        <h2>Pending Tasks</h2>
+        <div id="incomplete-tasks">
+          <!-- We will be listing all of our messages in here -->
+        </div>
+
+        <h2>Complete Tasks</h2>
+        <div id="complete-tasks">
+          <!-- We will be listing all of our messages in here -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
