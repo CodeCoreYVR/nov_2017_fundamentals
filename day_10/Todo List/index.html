@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Firebase Todo List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Add the Firebase code here. Below this comment -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      // THIS IS EXAMPLE ONLY!!!!!
+      // Copy and Paste your own Firebase configuration code
+      var config = {
+        apiKey: "???",
+        authDomain: "???",
+        databaseURL: "???",
+        projectId: "???",
+        storageBucket: "???",
+        messagingSenderId: "???"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(config);
+
+      // Connect to the todos object in your Firebase Project
+      const todoList = firebase.database().ref('todos');
+
+      // Retrieve all the todos from Firebase and add them to the website
+      todoList.on('child_added', function(data) {
+        const id = data.key;
+        const todo = data.val();
+
+        if(todo.completed) {
+          $('#complete-tasks').prepend(`
+            <div class="card" id="todo-${id}">
+              <div class="card-body">
+                ${todo.task}
+                <br>
+                <a href="javascript:void(0)" class="btn btn-danger">Delete</a>
+                <br>
+                <a href="javascript:void(0)" class="btn btn-warning toggle-complete" data-id='${id}' data-task='${todo.task}' data-completed='${todo.completed}'>
+                  Mark NOT Complete
+                </a>
+              </div>
+            </div>
+          `);
+        } else {
+          $('#incomplete-tasks').prepend(`
+            <div class="card" id="todo-${id}">
+              <div class="card-body">
+                ${todo.task}
+                <br>
+                <a href="javascript:void(0)" class="btn btn-danger">Delete</a>
+                <br>
+                <a href="javascript:void(0)" class="btn btn-success toggle-complete" data-id='${id}' data-task='${todo.task}' data-completed='${todo.completed}'>
+                  Mark Complete
+                </a>
+              </div>
+            </div>
+          `);
+        }
+
+        $(".btn.btn-danger").click(function(event){
+          event.preventDefault();
+          // Backend: this deletes the todo task from Firebase
+          // The id is coming from above code const id = data.key;
+          // since we are in the same function, we have access to id
+          firebase.database().ref(`todos/${id}`).remove();
+        });
+      })
+
+      // Frontend: remove the todo task from the webpage
+      todoList.on('child_removed', function(data){
+        const id = data.key;
+        $(`#todo-${id}`).fadeOut();
+      });
+
+      $(document).ready(function() {
+        // Capture the data when the form submits
+        $('#task-form').submit(function(event){
+          event.preventDefault();
+
+          // Get the value from the form input
+          const task = $('#body').val()
+
+          // Backend: Creates the todo task on Firebase
+          todoList.push({ task: task, completed: false });
+
+          // clears the form input
+          $('#body').val('')
+        });
+
+        // Move the todo task from incomplete to complete
+        // I didnt want to confuse you more by introducing updating on firebase
+        // here I am just doing what you already know, deleting and adding.
+        // we save the todo task info to 3 variables and then delete the todo
+        // task. After deleted, we create a brand new todo task with the
+        // completed property changed.
+        // read more about this .on 'click' here... look for childSelector
+        // https://www.w3schools.com/jquery/event_on.asp
+        $('#tasks').on('click', '.toggle-complete', function() {
+          const id = $(this).data('id')
+          const task = $(this).data('task')
+          const completed = $(this).data('completed')
+
+          // Frontend: Removes from the screen
+          $(`#todo-${id}`).fadeOut();
+
+          // Backend: Removes the todo from Firebase
+          firebase.database().ref(`todos/${id}`).remove();
+
+          // Backend: Creating a new todo task in Firebase
+          todoList.push({ task: task, completed: !completed });
+        });
+      })
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Firebase Todo</h1>
+
+      <form id="task-form">
+        <div class="form-group">
+          <label for="name">Task</label>
+          <input type="text" id="body" class="form-control">
+        </div>
+        <input type="submit" value="Send Message" class="btn btn-primary">
+      </form>
+
+      <hr>
+
+      <div id="tasks">
+        <h2>Pending Tasks</h2>
+        <div id="incomplete-tasks">
+          <!-- We will be listing all of our messages in here -->
+        </div>
+
+        <h2>Complete Tasks</h2>
+        <div id="complete-tasks">
+          <!-- We will be listing all of our messages in here -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
