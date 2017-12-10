@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Awesome Messages</title>
+    <style>
+      .message {
+        margin-bottom: 10px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCaxvpTnrBjC0NZaaQGE8ZLMyhoOJ-u5hE",
+        authDomain: "awesome-messages-c9fa6.firebaseapp.com",
+        databaseURL: "https://awesome-messages-c9fa6.firebaseio.com",
+        projectId: "awesome-messages-c9fa6",
+        storageBucket: "awesome-messages-c9fa6.appspot.com",
+        messagingSenderId: "924164513501"
+      };
+      firebase.initializeApp(config);
+
+      // this will create a references to `messages` in our firebase database
+      // which means it will have to do with all the messages so events will be
+      // triggered when something changes to `messages` such as adding a message
+      // removing a message or updating a message
+      const messagesRef = firebase.database().ref('messages');
+
+      // this will register a callback function that will be executed when a new
+      // element (object) is added to `messages` on Firebase
+      // When you first load the page, Firebase will load all the data by
+      // default so `child_added` will triggered for every child of `messages`
+      // in your database
+      messagesRef.on('child_added', function(data) {
+        const id = data.key;
+        const messageContent = data.val();
+        // insert HTML snippet into div with id `messages` so the user can
+        // see the content of the message
+        $('#messages').prepend(`
+          <div class="card message" id="message-${id}">
+            <div class="card-body">
+              Name: ${messageContent.name}
+              <br>
+              ${messageContent.body}
+              <a href='javascript:void(0)' class='btn btn-danger' data-id='${id}'>Delete</a>
+            </div>
+          </div>
+          `);
+
+          $(`[data-id=${id}]`).click(function(event){
+            event.preventDefault();
+            firebase.database().ref(`messages/${id}`).remove();
+          });
+
+      });
+
+      messagesRef.on('child_removed', function(data){
+        const id = data.key;
+        $(`#message-${id}`).remove();
+      });
+
+      $(document).ready(function(){
+        $('#message-form').submit(function(event){
+          event.preventDefault();
+          const name = $('#name').val();
+          const body = $('#body').val();
+          messagesRef.push({ name: name, body: body});
+          $('#name').val('');
+          $('#body').val('');
+        });
+      });
+
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Awesome Messages</h1>
+      <form id="message-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id='name' class='form-control'>
+        </div>
+        <div class="form-group">
+          <label for="body">Message</label>
+          <textarea id="body" class="form-control"></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary">
+      </form>
+      <hr>
+      <div id="messages"></div>
+    </div>
+  </body>
+</html>
